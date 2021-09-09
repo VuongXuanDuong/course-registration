@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'User 1',
+                'name' => 'Nguyen Van A',
                 'user_name' => 'user1',
                 'password' => Hash::make('123456'),
                 'is_admin' => 0,
@@ -34,21 +34,13 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'User 2',
+                'name' => 'Nguyen Van B',
                 'user_name' => 'user2',
                 'password' => Hash::make('123456'),
                 'is_admin' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
-            [
-                'name' => 'User 3',
-                'user_name' => 'user3',
-                'password' => Hash::make('123456'),
-                'is_admin' => 0,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ]
         ];
         User::query()->insert($users);
     }
