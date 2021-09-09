@@ -20,7 +20,7 @@ class CourseController extends Controller
 
     public function detailOneCourse($id)
     {
-        $course = Course::query()->where(['subject_id' => $id])->with(['shift', 'subject'])->first();
+        $course = Course::query()->where(['subject_id' => $id])->with(['shift', 'subject'])->get();
         return response([
             'status' => 200,
             'data' => $course
