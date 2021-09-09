@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Api\V1\Admin\UserController;
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\MessageController;
 use App\Http\Controllers\Api\V1\ReactionController;
+use App\Http\Controllers\Api\V1\SubjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,28 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function () {
 
-    // do not use.
-    Route::post('login', 'AuthController@login');
-    Route::post('register', 'AuthController@register');
-    Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
-    Route::post('check-codeReset', [AuthController::class, 'checkCodeResetPassword']);
-    Route::post('reset-password', [AuthController::class, 'resetPassword']);
+    // subject
+    Route::get('subjects', [SubjectController::class, 'index']);
 
-    Route::post('me', 'AuthController@me');
-    Route::get('logout', 'AuthController@logout');
+    // courses
+    Route::get('courses', [CourseController::class, 'index']);
+    Route::get('courses/{id}', [CourseController::class, 'detailOneCourse']);
 
-
-
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::prefix('user')->group(function () {
-          // do somethings
-        });
-
-        Route::prefix('admin')->namespace('Admin')->group(function () {
-            Route::middleware('scope:admin')->group(function () {
-               // do somethings
-            });
-        });
-
-    });
 });
