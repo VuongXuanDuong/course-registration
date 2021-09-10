@@ -17,4 +17,26 @@ class SubjectController extends Controller
         ], 200);
     }
 
+    public function store(Request $request) 
+    {
+       
+        $subject = [
+            'name' => $request->name ?? null;
+        ];
+
+        DB::beginTransaction();
+        try {
+            $data = Subject::query()->insert($subject);
+            DB::commit();
+            return response([
+                'status' => 200,
+                'data' => $data
+            ], 200);
+        } catch (\Exception $e) {
+            Log::info($e);
+            DB::rollBack();
+            return response()->json(['error' => 'server_error'], 500);
+        }
+    }
+
 }

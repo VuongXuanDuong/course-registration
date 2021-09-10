@@ -26,4 +26,29 @@ class CourseController extends Controller
             'data' => $course
         ], 200);
     }
+
+    public function store(Request $request) 
+    {
+       
+        $course = [
+            'subject_id' => $request->subject_id,
+            'shift_id' => $request->shift_id,
+            'code' => $request->code,
+            'total' => $request->total
+        ];
+
+        DB::beginTransaction();
+        try {
+            $data = Course::query()->insert($course);
+            DB::commit();
+            return response([
+                'status' => 200,
+                'data' => $data
+            ], 200);
+        } catch (\Exception $e) {
+            Log::info($e);
+            DB::rollBack();
+            return response()->json(['error' => 'server_error'], 500);
+        }
+    }
 }
