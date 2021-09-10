@@ -17,11 +17,11 @@ class SubjectController extends Controller
         ], 200);
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
-       
+
         $subject = [
-            'name' => $request->name ?? null;
+            'name' => $request->name
         ];
 
         DB::beginTransaction();
