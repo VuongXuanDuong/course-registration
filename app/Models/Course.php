@@ -9,7 +9,7 @@ class Course extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'shift_id', 'subject_id', 'code', 'total'
+        'shift_id', 'subject_id', 'code', 'total', 'room_id'
     ];
 
     public function shift() {
@@ -18,5 +18,9 @@ class Course extends Model
 
     public function subject() {
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
+    }
+
+    public function room() {
+        return $this->belongsTo(Room::class, 'room_id', 'id');
     }
 }

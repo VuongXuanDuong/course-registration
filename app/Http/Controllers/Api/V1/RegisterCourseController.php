@@ -21,7 +21,7 @@ class RegisterCourseController extends Controller
     {
         $userId = $request->user_id ?? 2;
 
-        $register = Register::query()->where(['user_id' => $userId])->get();
+        $register = Register::query()->where(['user_id' => $userId])->with(['student', 'course', 'course.shift', 'course.room', 'course.subject'])->get();
         return response([
             'status' => 200,
             'data' => $register

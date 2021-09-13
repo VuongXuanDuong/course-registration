@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class Room extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name', 'credits', 'day_start', 'day_end'
+        'name'
     ];
+
 }

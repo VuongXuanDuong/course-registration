@@ -20,21 +20,22 @@ class CourseController extends Controller
 
     public function detailOneCourse($id)
     {
-        $course = Course::query()->where(['subject_id' => $id])->with(['shift', 'subject'])->get();
+        $course = Course::query()->where(['subject_id' => $id])->with(['shift', 'subject', 'room'])->get();
         return response([
             'status' => 200,
             'data' => $course
         ], 200);
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
-       
+
         $course = [
             'subject_id' => $request->subject_id,
             'shift_id' => $request->shift_id,
             'code' => $request->code,
-            'total' => $request->total
+            'total' => $request->total,
+            'room_id' => $request->room_id
         ];
 
         DB::beginTransaction();

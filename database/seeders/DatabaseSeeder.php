@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Room;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +19,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             ShiftsTableDataSeeder::class,
             SubjectsTableSeeder::class,
-            CoursesTableSeeder::class
+            CoursesTableSeeder::class,
+            Room::class
         ]);
     }
 }

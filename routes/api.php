@@ -33,7 +33,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
     // get all shifts of subject
     Route::get('courses/{id}', [CourseController::class, 'detailOneCourse']);
     // create a new course
-    // params; { subject_id: int, shift_id: int, code: string, total: int }
+    // params; { subject_id: int, shift_id: int, code: string, total: int, room_id: int }
     Route::post('courses', [CourseController::class, 'store']);
 
     // params; { user_id: int, course_id: int }
