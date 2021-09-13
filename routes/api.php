@@ -25,7 +25,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
 
     // subject
     Route::get('subjects', [SubjectController::class, 'index']);
-    // params; { name: string }
+    // params; { name: string, credits: int, day_start: string_format_day, day_end: string_format_day }
     Route::post('subjects', [CourseController::class, 'store']);
 
     // courses

@@ -14,8 +14,8 @@ class AddComlumnToCoursesTable extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->unsignedInteger('room_id')->nullable();
-            $table->unsignedInteger('teacher_id')->nullable();
+            $table->unsignedInteger('room_id')->nullable()->after('subject_id');
+            $table->unsignedInteger('teacher_id')->nullable()->after('subject_id');
         });
     }
 

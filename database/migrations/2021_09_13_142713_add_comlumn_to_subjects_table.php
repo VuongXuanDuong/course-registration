@@ -14,9 +14,9 @@ class AddComlumnToSubjectsTable extends Migration
     public function up()
     {
         Schema::table('subjects', function (Blueprint $table) {
-            $table->string('credits')->nullable();
-            $table->date('day_start')->nullable();
-            $table->date('day_end')->nullable();
+            $table->string('credits')->nullable()->after('name');
+            $table->date('day_start')->nullable()->after('name');
+            $table->date('day_end')->nullable()->after('name');
         });
     }
 
